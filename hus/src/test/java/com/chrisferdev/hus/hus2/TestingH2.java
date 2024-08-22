@@ -36,7 +36,7 @@ class TestingH2 {
         category.setName("Category 1");
         List<Category> categories = List.of(category);
         Page<Category> categoryPage = new PageImpl<>(categories);
-        Pageable pageable = Pageable.ofSize(10);
+        Pageable pageable = Pageable.ofSize(3);
 
         when(iCategoryRepository.findAllCategories("asc", pageable)).thenReturn(categoryPage);
 

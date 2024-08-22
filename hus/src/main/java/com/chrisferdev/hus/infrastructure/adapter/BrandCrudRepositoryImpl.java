@@ -2,6 +2,7 @@ package com.chrisferdev.hus.infrastructure.adapter;
 
 import com.chrisferdev.hus.domain.model.Brand;
 import com.chrisferdev.hus.domain.port.IBrandRepository;
+import com.chrisferdev.hus.infrastructure.entity.BrandEntity;
 import com.chrisferdev.hus.infrastructure.mapper.BrandMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -32,6 +33,12 @@ public class BrandCrudRepositoryImpl implements IBrandRepository {
 
     @Override
     public Page<Brand> findAllBrands(String sortOrder, Pageable pageable) {
-        return null;
+        Page<BrandEntity> page;
+        if("asc".equalsIgnoreCase(sortOrder)){
+            page = iBrandCrudRepository.findAllByOrderByNameAsc(pageable);
+        } else {
+            page = iBrandCrudRepository.findAllByOrderByNameDesc(pageable);
+        }
+        return page.map(brandMapper::toBrand);
     }
 }
