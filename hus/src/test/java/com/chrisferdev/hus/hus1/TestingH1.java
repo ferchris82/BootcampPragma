@@ -29,11 +29,11 @@ class TestingH1 {
 		// Arrange
 		Category category = new Category();
 		category.setName("Test Category");
-		Category savedCategory = new Category();
-		savedCategory.setName("Test Category");
+		Category saveCategory = new Category();
+		saveCategory.setName("Test Category");
 
 		// Mock behavior Crea el objeto
-		when(iCategoryRepository.saveCategory(category)).thenReturn(savedCategory);
+		when(iCategoryRepository.saveCategory(category)).thenReturn(saveCategory);
 
 		// Act Llama al método
 		Category result = categoryService.saveCategory(category);
