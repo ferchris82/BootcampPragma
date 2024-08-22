@@ -6,7 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 // Interfaz que define los métodos que se implementan automáticamente por JPA
-public interface ICategoryCrudRepository extends JpaRepository<CategoryEntity, Integer> {
+public interface ICategoryCrudRepository extends JpaRepository<CategoryEntity, Long> {
     boolean existsByName(String name);
     Page<CategoryEntity> findAllByOrderByNameAsc(Pageable pageable);
     Page<CategoryEntity> findAllByOrderByNameDesc(Pageable pageable);

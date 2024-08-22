@@ -1,5 +1,3 @@
-// Modelo de datos
-
 package com.chrisferdev.hus.domain.model;
 
 import lombok.AllArgsConstructor;
@@ -9,9 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Category {
-    private Long idCategory;
+public class Brand {
+    private Long idBrand;
     private String name;
     private String description;
-
 }

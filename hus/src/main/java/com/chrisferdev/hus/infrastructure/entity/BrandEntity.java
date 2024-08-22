@@ -4,18 +4,18 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-//Clase que representa una entidad en la base de datos
 @Entity
-@Table(name = "categories")
+@Table(name = "brands")
 @Data
 @NoArgsConstructor
-public class CategoryEntity {
+public class BrandEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idCategory;
+    private Long idBrand;
 
     @Column(length = 50)
     private String name;
-    @Column(length = 90)
+    @Column(length = 120)
     private String description;
+
 }
