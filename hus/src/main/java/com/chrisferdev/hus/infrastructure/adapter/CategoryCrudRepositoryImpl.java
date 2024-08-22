@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
+// Adaptador que implementa la interfaz conectando la lógica del dominio con la base de datos.
 @Repository
 public class CategoryCrudRepositoryImpl implements ICategoryRepository {
     private final ICategoryCrudRepository iCategoryCrudRepository;
@@ -19,7 +20,7 @@ public class CategoryCrudRepositoryImpl implements ICategoryRepository {
     }
 
     @Override
-    public Category save(Category category) {
+    public Category saveCategory(Category category) {
         if (existsByName(category.getName())) {
             throw new IllegalArgumentException("La categoría con el nombre " + category.getName() + " ya existe.");
         }

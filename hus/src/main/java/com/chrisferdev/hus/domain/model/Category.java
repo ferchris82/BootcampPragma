@@ -1,3 +1,5 @@
+// Modelo de datos
+
 package com.chrisferdev.hus.domain.model;
 
 import lombok.AllArgsConstructor;

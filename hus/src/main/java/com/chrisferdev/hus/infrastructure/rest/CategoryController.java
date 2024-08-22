@@ -18,16 +18,16 @@ public class CategoryController {
         this.categoryService = categoryService;
     }
 
-    @PostMapping("/admin/categories")
+    @PostMapping
     public ResponseEntity<Category> save(@RequestBody Category category){
-        return new ResponseEntity<>(categoryService.save(category), HttpStatus.CREATED);
+        return new ResponseEntity<>(categoryService.saveCategory(category), HttpStatus.CREATED);
     }
 
     @GetMapping
     public ResponseEntity<Page<Category>> getCategories(
             @RequestParam(defaultValue = "asc") String sortOrder,
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size) {
+            @RequestParam(defaultValue = "3") int size) {
 
         Pageable pageable = PageRequest.of(page, size);
         Page<Category> categories = categoryService.findAllCategories(sortOrder, pageable);

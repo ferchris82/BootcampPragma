@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-//Clase que persiste en la base de datos
+//Clase que representa una entidad en la base de datos
 @Entity
 @Table(name = "categories")
 @Data

@@ -5,6 +5,7 @@ import com.chrisferdev.hus.domain.port.ICategoryRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+// Clase de configuración de Spring que se encarga de definir beans para la aplicación.
 @Configuration
 public class BeanConfiguration {
 
