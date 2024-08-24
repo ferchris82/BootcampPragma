@@ -26,10 +26,10 @@ class TestingH3 {
         //Arrange
         Brand brand = new Brand();
         brand.setName("Test Brand");
-        Brand savedBrand = new Brand();
-        savedBrand.setName("Test Brand");
+        Brand saveBrand = new Brand();
+        saveBrand.setName("Test Brand");
 
-        when(iBrandRepository.saveBrand(brand)).thenReturn(savedBrand);
+        when(iBrandRepository.saveBrand(brand)).thenReturn(saveBrand);
 
         Brand result = brandService.saveBrand(brand);
 

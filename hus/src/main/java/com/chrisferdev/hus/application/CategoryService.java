@@ -13,18 +13,16 @@ import org.springframework.data.domain.Pageable;
 // Esta clase encapsula la lógica de negocio relacionada con las categorías.
 public class CategoryService {
     private final ICategoryRepository iCategoryRepository;
-
-    // Constructor de la clase
+    
     public CategoryService(ICategoryRepository iCategoryRepository) {
         this.iCategoryRepository = iCategoryRepository;
     }
 
-    //Método guardar Categoría
     public Category saveCategory(Category category){
         return iCategoryRepository.saveCategory(category);
     }
 
-    // Método para paginar la lista de categorías
+
     public Page<Category> findAllCategories(String sortOrder, Pageable pageable) {
         return iCategoryRepository.findAllCategories(sortOrder, pageable);
     }

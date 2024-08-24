@@ -2,7 +2,6 @@
 
 package com.chrisferdev.hus.domain.port;
 
-
 import com.chrisferdev.hus.domain.model.Category;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

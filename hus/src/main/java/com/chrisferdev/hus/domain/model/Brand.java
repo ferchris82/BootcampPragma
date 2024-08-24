@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Brand {
-    private Long idBrand;
+    private Long id;
     private String name;
     private String description;
 }
