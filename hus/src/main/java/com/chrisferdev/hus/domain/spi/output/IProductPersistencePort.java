@@ -1,7 +1,8 @@
-package com.chrisferdev.pragmabackend.domain.spi.output;
+package com.chrisferdev.hus.domain.spi.output;
 
-import com.chrisferdev.pragmabackend.domain.model.PaginatedResult;
-import com.chrisferdev.pragmabackend.domain.model.Product;
+
+import com.chrisferdev.hus.domain.model.PaginatedResult;
+import com.chrisferdev.hus.domain.model.Product;
 
 public interface IProductPersistencePort {
 

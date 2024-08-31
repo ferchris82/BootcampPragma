@@ -1,8 +1,9 @@
-package com.chrisferdev.pragmabackend.domain.api.usecase;
+package com.chrisferdev.hus.domain.api.usecase;
 
-import com.chrisferdev.pragmabackend.domain.model.PaginatedResult;
-import com.chrisferdev.pragmabackend.domain.model.Product;
-import com.chrisferdev.pragmabackend.domain.spi.output.IProductPersistencePort;
+
+import com.chrisferdev.hus.domain.model.PaginatedResult;
+import com.chrisferdev.hus.domain.model.Product;
+import com.chrisferdev.hus.domain.spi.output.IProductPersistencePort;
 import org.springframework.stereotype.Service;
 
 @Service

@@ -1,7 +1,8 @@
-package com.chrisferdev.pragmabackend.ports.driven.jpa.mapper;
+package com.chrisferdev.hus.ports.driven.jpa.mapper;
 
-import com.chrisferdev.pragmabackend.domain.model.Brand;
-import com.chrisferdev.pragmabackend.ports.driven.jpa.entity.BrandEntity;
+
+import com.chrisferdev.hus.domain.model.Brand;
+import com.chrisferdev.hus.ports.driven.jpa.entity.BrandEntity;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

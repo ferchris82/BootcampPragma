@@ -1,13 +1,14 @@
-package com.chrisferdev.pragmabackend.ports.driven.jpa.adapter;
+package com.chrisferdev.hus.ports.driven.jpa.adapter;
 
-import com.chrisferdev.pragmabackend.configuration.exception.BrandAlreadyExistsException;
-import com.chrisferdev.pragmabackend.configuration.exception.exceptionhandler.ExceptionResponse;
-import com.chrisferdev.pragmabackend.domain.model.Brand;
-import com.chrisferdev.pragmabackend.domain.model.PaginatedResult;
-import com.chrisferdev.pragmabackend.domain.spi.output.IBrandPersistencePort;
-import com.chrisferdev.pragmabackend.ports.driven.jpa.entity.BrandEntity;
-import com.chrisferdev.pragmabackend.ports.driven.jpa.mapper.BrandMapper;
-import com.chrisferdev.pragmabackend.ports.driven.jpa.repository.IBrandJpaRepository;
+
+import com.chrisferdev.hus.configuration.exception.BrandAlreadyExistsException;
+import com.chrisferdev.hus.configuration.exception.exceptionhandler.ExceptionResponse;
+import com.chrisferdev.hus.domain.model.Brand;
+import com.chrisferdev.hus.domain.model.PaginatedResult;
+import com.chrisferdev.hus.domain.spi.output.IBrandPersistencePort;
+import com.chrisferdev.hus.ports.driven.jpa.entity.BrandEntity;
+import com.chrisferdev.hus.ports.driven.jpa.mapper.BrandMapper;
+import com.chrisferdev.hus.ports.driven.jpa.repository.IBrandJpaRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;

@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.util.Set;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -16,6 +16,6 @@ public class Product {
     private String description;
     private Integer quantity;
     private BigDecimal price;
-    private Set<Long> categoryIds;
-    private Set<Long> brandIds;
+    private Long brandId;
+    private List<Long> categoryIds;
 }

@@ -1,9 +1,10 @@
-package com.chrisferdev.pragmabackend.ports.driving.rest;
+package com.chrisferdev.hus.ports.driving.rest;
 
-import com.chrisferdev.pragmabackend.configuration.exception.exceptionhandler.ExceptionResponse;
-import com.chrisferdev.pragmabackend.domain.api.usecase.BrandServiceImpl;
-import com.chrisferdev.pragmabackend.domain.model.Brand;
-import com.chrisferdev.pragmabackend.domain.model.PaginatedResult;
+
+import com.chrisferdev.hus.configuration.exception.exceptionhandler.ExceptionResponse;
+import com.chrisferdev.hus.domain.api.usecase.BrandServiceImpl;
+import com.chrisferdev.hus.domain.model.Brand;
+import com.chrisferdev.hus.domain.model.PaginatedResult;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;

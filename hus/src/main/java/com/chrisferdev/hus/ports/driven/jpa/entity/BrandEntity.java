@@ -1,4 +1,4 @@
-package com.chrisferdev.pragmabackend.ports.driven.jpa.entity;
+package com.chrisferdev.hus.ports.driven.jpa.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package com.chrisferdev.pragmabackend.configuration.exception;
+package com.chrisferdev.hus.configuration.exception;
 
 public class ProductException extends RuntimeException{
 

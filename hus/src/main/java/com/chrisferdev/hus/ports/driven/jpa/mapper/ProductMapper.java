@@ -1,7 +1,8 @@
-package com.chrisferdev.pragmabackend.ports.driven.jpa.mapper;
+package com.chrisferdev.hus.ports.driven.jpa.mapper;
 
-import com.chrisferdev.pragmabackend.domain.model.Product;
-import com.chrisferdev.pragmabackend.ports.driven.jpa.entity.ProductEntity;
+
+import com.chrisferdev.hus.domain.model.Product;
+import com.chrisferdev.hus.ports.driven.jpa.entity.ProductEntity;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

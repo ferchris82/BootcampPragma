@@ -1,6 +1,7 @@
-package com.chrisferdev.pragmabackend.ports.driven.jpa.repository;
+package com.chrisferdev.hus.ports.driven.jpa.repository;
 
-import com.chrisferdev.pragmabackend.ports.driven.jpa.entity.CategoryEntity;
+
+import com.chrisferdev.hus.ports.driven.jpa.entity.CategoryEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,4 +1,4 @@
-package com.chrisferdev.pragmabackend.configuration.documentation;
+package com.chrisferdev.hus.configuration.documentation;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;

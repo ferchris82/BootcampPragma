@@ -1,13 +1,14 @@
-package com.chrisferdev.pragmabackend.ports.driven.jpa.adapter;
+package com.chrisferdev.hus.ports.driven.jpa.adapter;
 
-import com.chrisferdev.pragmabackend.configuration.exception.CategoryAlreadyExistsException;
-import com.chrisferdev.pragmabackend.configuration.exception.exceptionhandler.ExceptionResponse;
-import com.chrisferdev.pragmabackend.domain.model.Category;
-import com.chrisferdev.pragmabackend.domain.model.PaginatedResult;
-import com.chrisferdev.pragmabackend.domain.spi.output.ICategoryPersistencePort;
-import com.chrisferdev.pragmabackend.ports.driven.jpa.entity.CategoryEntity;
-import com.chrisferdev.pragmabackend.ports.driven.jpa.mapper.CategoryMapper;
-import com.chrisferdev.pragmabackend.ports.driven.jpa.repository.ICategoryJpaRepository;
+
+import com.chrisferdev.hus.configuration.exception.CategoryAlreadyExistsException;
+import com.chrisferdev.hus.configuration.exception.exceptionhandler.ExceptionResponse;
+import com.chrisferdev.hus.domain.model.Category;
+import com.chrisferdev.hus.domain.model.PaginatedResult;
+import com.chrisferdev.hus.domain.spi.output.ICategoryPersistencePort;
+import com.chrisferdev.hus.ports.driven.jpa.entity.CategoryEntity;
+import com.chrisferdev.hus.ports.driven.jpa.mapper.CategoryMapper;
+import com.chrisferdev.hus.ports.driven.jpa.repository.ICategoryJpaRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;

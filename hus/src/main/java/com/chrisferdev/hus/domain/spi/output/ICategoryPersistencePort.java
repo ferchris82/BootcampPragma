@@ -1,10 +1,9 @@
-package com.chrisferdev.pragmabackend.domain.spi.output;
-
+package com.chrisferdev.hus.domain.spi.output;
 
 //SPI (Service Provider Interface)
 
-import com.chrisferdev.pragmabackend.domain.model.Category;
-import com.chrisferdev.pragmabackend.domain.model.PaginatedResult;
+import com.chrisferdev.hus.domain.model.Category;
+import com.chrisferdev.hus.domain.model.PaginatedResult;
 
 public interface ICategoryPersistencePort {
     Category saveCategory (Category category);

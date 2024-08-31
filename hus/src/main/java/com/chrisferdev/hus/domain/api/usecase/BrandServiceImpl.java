@@ -1,9 +1,10 @@
-package com.chrisferdev.pragmabackend.domain.api.usecase;
+package com.chrisferdev.hus.domain.api.usecase;
 
-import com.chrisferdev.pragmabackend.configuration.exception.CategoryAlreadyExistsException;
-import com.chrisferdev.pragmabackend.domain.model.Brand;
-import com.chrisferdev.pragmabackend.domain.model.PaginatedResult;
-import com.chrisferdev.pragmabackend.domain.spi.output.IBrandPersistencePort;
+
+import com.chrisferdev.hus.configuration.exception.CategoryAlreadyExistsException;
+import com.chrisferdev.hus.domain.model.Brand;
+import com.chrisferdev.hus.domain.model.PaginatedResult;
+import com.chrisferdev.hus.domain.spi.output.IBrandPersistencePort;
 import org.springframework.stereotype.Service;
 
 @Service

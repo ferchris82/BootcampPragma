@@ -1,12 +1,12 @@
-package com.chrisferdev.pragmabackend.domain.api.usecase;
+package com.chrisferdev.hus.domain.api.usecase;
 
 
 // Implementación de los casos de uso
 
-import com.chrisferdev.pragmabackend.configuration.exception.CategoryAlreadyExistsException;
-import com.chrisferdev.pragmabackend.domain.model.Category;
-import com.chrisferdev.pragmabackend.domain.model.PaginatedResult;
-import com.chrisferdev.pragmabackend.domain.spi.output.ICategoryPersistencePort;
+import com.chrisferdev.hus.configuration.exception.CategoryAlreadyExistsException;
+import com.chrisferdev.hus.domain.model.Category;
+import com.chrisferdev.hus.domain.model.PaginatedResult;
+import com.chrisferdev.hus.domain.spi.output.ICategoryPersistencePort;
 import org.springframework.stereotype.Service;
 
 @Service
