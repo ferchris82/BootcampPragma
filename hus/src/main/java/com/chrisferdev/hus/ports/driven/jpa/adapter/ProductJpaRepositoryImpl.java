@@ -12,14 +12,16 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 
-
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 @Repository
 public class ProductJpaRepositoryImpl implements IProductPersistencePort {
     private final IProductJpaRepository iProductJpaRepository;
     private final ProductMapper productMapper;
+
 
     public ProductJpaRepositoryImpl(IProductJpaRepository iProductJpaRepository, ProductMapper productMapper) {
         this.iProductJpaRepository = iProductJpaRepository;
@@ -28,7 +30,15 @@ public class ProductJpaRepositoryImpl implements IProductPersistencePort {
 
     @Override
     public Product saveProduct(Product product) {
-        return productMapper.toProduct(iProductJpaRepository.save(productMapper.toProductEntity(product)));
+        List<Long> categoryIds = product.getCategoryIds();
+        Set<Long> uniqueCategoryIds = new HashSet<>(categoryIds);
+
+        if (categoryIds.isEmpty() || categoryIds.size() > 3 || categoryIds.size() != uniqueCategoryIds.size()) {
+            throw new IllegalArgumentException();
+        }
+
+        return productMapper.toProduct(
+                iProductJpaRepository.save(productMapper.toProductEntity(product)));
     }
 
     @Override

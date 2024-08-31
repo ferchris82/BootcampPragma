@@ -1,22 +1,19 @@
-package com.chrisferdev.hus.domain.model;
+package com.chrisferdev.hus.ports.driving.dto.response;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.util.List;
-
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Product {
-    private Long id;
+public class ProductResponseDTO {
     private String name;
     private String description;
     private Integer quantity;
     private BigDecimal price;
-    private Integer brandId;
-    private List<Long> categoryIds;
+    private String brandName;
 }

@@ -1,6 +1,5 @@
 package com.chrisferdev.hus.domain.api.usecase;
 
-
 import com.chrisferdev.hus.configuration.exception.CategoryAlreadyExistsException;
 import com.chrisferdev.hus.domain.model.Brand;
 import com.chrisferdev.hus.domain.model.PaginatedResult;

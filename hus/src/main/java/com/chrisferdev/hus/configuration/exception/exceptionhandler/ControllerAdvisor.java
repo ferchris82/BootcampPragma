@@ -1,8 +1,9 @@
 package com.chrisferdev.hus.configuration.exception.exceptionhandler;
 
-import com.chrisferdev.pragmabackend.configuration.exception.BrandAlreadyExistsException;
-import com.chrisferdev.pragmabackend.configuration.exception.CategoryAlreadyExistsException;
-import com.chrisferdev.pragmabackend.configuration.exception.ProductException;
+
+import com.chrisferdev.hus.configuration.exception.BrandAlreadyExistsException;
+import com.chrisferdev.hus.configuration.exception.CategoryAlreadyExistsException;
+import com.chrisferdev.hus.configuration.exception.ProductException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -48,14 +49,11 @@ public class ControllerAdvisor {
             case TOO_MANY_CATEGORIES:
                 response = ExceptionResponse.TOO_MANY_CATEGORIES;
                 break;
-            case DUPLICATE_CATEGORIES:
-                response = ExceptionResponse.DUPLICATE_CATEGORIES;
-                break;
             case NO_BRAND:
                 response = ExceptionResponse.NO_BRAND;
                 break;
             default:
-                response = ExceptionResponse.INVALID_CATEGORY; // Por si hay un caso no esperado
+                response = ExceptionResponse.INVALID_CATEGORY;
         }
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)

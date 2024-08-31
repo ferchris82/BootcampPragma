@@ -1,6 +1,7 @@
 package com.chrisferdev.hus.ports.driven.jpa.adapter;
 
 
+
 import com.chrisferdev.hus.configuration.exception.BrandAlreadyExistsException;
 import com.chrisferdev.hus.configuration.exception.exceptionhandler.ExceptionResponse;
 import com.chrisferdev.hus.domain.model.Brand;
