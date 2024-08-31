@@ -9,5 +9,7 @@ public interface IProductPersistencePort {
     Product saveProduct(Product product);
     PaginatedResult<Product> findAllProducts(String sortOrder, int page, int size);
     PaginatedResult<Product> findProductsByName(String name, String sortOrder, int page, int size);
+    PaginatedResult<Product> findProductsByBrand(Long brandId, String sortOrder, int page, int size);
+
 
 }

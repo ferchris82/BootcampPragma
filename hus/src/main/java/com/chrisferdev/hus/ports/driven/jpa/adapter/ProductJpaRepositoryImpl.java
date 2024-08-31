@@ -1,5 +1,6 @@
 package com.chrisferdev.hus.ports.driven.jpa.adapter;
 
+import com.chrisferdev.hus.configuration.exception.ProductException;
 import com.chrisferdev.hus.domain.model.PaginatedResult;
 import com.chrisferdev.hus.domain.model.Product;
 import com.chrisferdev.hus.domain.spi.output.IProductPersistencePort;
@@ -28,13 +29,17 @@ public class ProductJpaRepositoryImpl implements IProductPersistencePort {
         this.productMapper = productMapper;
     }
 
+    private Pageable createPageable(int page, int size, String sortOrder) {
+        return PageRequest.of(page, size, "asc".equalsIgnoreCase(sortOrder) ? Sort.by("name").ascending() : Sort.by("name").descending());
+    }
+
     @Override
     public Product saveProduct(Product product) {
         List<Long> categoryIds = product.getCategoryIds();
         Set<Long> uniqueCategoryIds = new HashSet<>(categoryIds);
 
         if (categoryIds.isEmpty() || categoryIds.size() > 3 || categoryIds.size() != uniqueCategoryIds.size()) {
-            throw new IllegalArgumentException();
+            throw new ProductException(ProductException.ErrorType.ERROR_CATEGORY);
         }
 
         return productMapper.toProduct(
@@ -43,22 +48,35 @@ public class ProductJpaRepositoryImpl implements IProductPersistencePort {
 
     @Override
     public PaginatedResult<Product> findAllProducts(String sortOrder, int page, int size) {
-        Pageable pageable = PageRequest.of(page, size, "asc".equalsIgnoreCase(sortOrder) ? Sort.by("name").ascending() : Sort.by("name").descending());
+        Pageable pageable = createPageable(page, size, sortOrder);
         Page<ProductEntity> pageResult = iProductJpaRepository.findAll(pageable);
         List<Product> products = pageResult.getContent().stream()
                 .map(productMapper::toProduct)
                 .toList();
-        return new PaginatedResult<>(products, pageResult.getNumber(), pageResult.getSize(), pageResult.getTotalElements());
+        return new PaginatedResult<>(
+                products, pageResult.getNumber(), pageResult.getSize(), pageResult.getTotalElements());
     }
 
     @Override
     public PaginatedResult<Product> findProductsByName(String name, String sortOrder, int page, int size) {
-        Pageable pageable = PageRequest.of(page, size, "asc".equalsIgnoreCase(sortOrder) ? Sort.by("name").ascending() : Sort.by("name").descending());
+        Pageable pageable = createPageable(page, size, sortOrder);
         Page<ProductEntity> pageResult = iProductJpaRepository.findAll(pageable);
         List<Product> products = pageResult.getContent().stream()
                 .map(productMapper::toProduct)
                 .toList();
-        return new PaginatedResult<>(products, pageResult.getNumber(), pageResult.getSize(), pageResult.getTotalElements());
+        return new PaginatedResult<>(
+                products, pageResult.getNumber(), pageResult.getSize(), pageResult.getTotalElements());
+    }
+
+    @Override
+    public PaginatedResult<Product> findProductsByBrand(Long brandId, String sortOrder, int page, int size) {
+        Pageable pageable = createPageable(page, size, sortOrder);
+        Page<ProductEntity> pageResult = iProductJpaRepository.findByBrandEntityId(brandId, pageable);
+        List<Product> products = pageResult.getContent().stream()
+                .map(productMapper::toProduct)
+                .toList();
+        return new PaginatedResult<>(
+                products, pageResult.getNumber(), pageResult.getSize(), pageResult.getTotalElements());
     }
 
 

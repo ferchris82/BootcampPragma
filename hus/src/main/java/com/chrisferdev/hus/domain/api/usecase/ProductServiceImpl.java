@@ -27,6 +27,8 @@ public class ProductServiceImpl {
         return iProductPersistencePort.findProductsByName(name, sortOrder, page, size);
     }
 
-
+    public PaginatedResult<Product> findProductsByBrand(Long brandId, String sortOrder, int page, int size) {
+        return iProductPersistencePort.findProductsByBrand(brandId, sortOrder, page, size);
+    }
 
 }

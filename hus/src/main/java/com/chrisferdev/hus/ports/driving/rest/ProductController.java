@@ -101,6 +101,29 @@ public class ProductController {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
-
-
+    @Operation(
+            summary = "Obtener productos por marca",
+            description = "Obtiene una lista de productos paginadas y ordenadas según la marca del producto.",
+            parameters = {
+                    @Parameter(name = "brandId", description = "ID de la marca para filtrar.", example = "1"),
+                    @Parameter(name = "sortOrder", description = "Orden de clasificación. Puede ser 'asc' para ascendente o 'desc' para descendente.", example = "asc"),
+                    @Parameter(name = "page", description = "Número de la página para la paginación.", example = "0"),
+                    @Parameter(name = "size", description = "Número de elementos por página.", example = "10")
+            }
+    )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Productos recuperados con éxito.",
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = PaginatedResult.class))),
+            @ApiResponse(responseCode = "400", description = "Solicitud inválida, por ejemplo, parámetros fuera de rango.",
+                    content = @Content(mediaType = "application/json"))
+    })
+    @GetMapping("/by-brand")
+    public ResponseEntity<PaginatedResult<Product>> getProductsByBrand(
+            @RequestParam Long brandId,
+            @RequestParam(defaultValue = "asc") String sortOrder,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+        PaginatedResult<Product> result = productServiceImpl.findProductsByBrand(brandId, sortOrder, page, size);
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
 }

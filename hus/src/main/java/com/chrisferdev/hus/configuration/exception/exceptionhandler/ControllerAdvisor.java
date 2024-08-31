@@ -43,8 +43,8 @@ public class ControllerAdvisor {
         ExceptionResponse response;
 
         switch (productException.getErrorType()) {
-            case NO_CATEGORY:
-                response = ExceptionResponse.NO_CATEGORY;
+            case ERROR_CATEGORY:
+                response = ExceptionResponse.ERROR_CATEGORY;
                 break;
             case TOO_MANY_CATEGORIES:
                 response = ExceptionResponse.TOO_MANY_CATEGORIES;
