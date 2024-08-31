@@ -11,7 +11,8 @@ public enum ExceptionResponse {
     ERROR_CATEGORY("El producto debe tener al menós una categoría y máximo 3 asociadas"),
     TOO_MANY_CATEGORIES("El producto debe tener máximo tres categorías asociadas"),
     DUPLICATE_CATEGORIES("El producto no debe tener una categoría duplicada"),
-    NO_BRAND("El producto debe tener una marca asociada");
+    NO_BRAND("El producto debe tener una marca asociada"),
+    PRODUCT_NOT_FOUND("El producto no fue encontrado");
 
     private String message;
 

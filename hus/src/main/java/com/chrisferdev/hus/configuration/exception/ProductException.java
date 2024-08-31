@@ -9,7 +9,8 @@ public class ProductException extends RuntimeException {
     public enum ErrorType {
         ERROR_CATEGORY,
         TOO_MANY_CATEGORIES,
-        NO_BRAND
+        NO_BRAND,
+        PRODUCT_NOT_FOUND
     }
 
     // Campo para almacenar el tipo de error

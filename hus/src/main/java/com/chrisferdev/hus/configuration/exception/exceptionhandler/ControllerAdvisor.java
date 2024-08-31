@@ -52,6 +52,9 @@ public class ControllerAdvisor {
             case NO_BRAND:
                 response = ExceptionResponse.NO_BRAND;
                 break;
+            case PRODUCT_NOT_FOUND:
+                response = ExceptionResponse.PRODUCT_NOT_FOUND;
+                break;
             default:
                 response = ExceptionResponse.INVALID_CATEGORY;
         }

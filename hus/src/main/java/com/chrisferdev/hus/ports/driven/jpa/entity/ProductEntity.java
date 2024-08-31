@@ -6,7 +6,8 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
-import java.util.Set;
+import java.util.List;
+
 
 @Entity
 @Table(name="products")
@@ -30,6 +31,6 @@ public class ProductEntity {
             joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id")
     )
-    private Set<CategoryEntity> categoryEntities;
+    private List<CategoryEntity> categoryEntities;
 
 }

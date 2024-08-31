@@ -6,6 +6,7 @@ import com.chrisferdev.hus.domain.model.Product;
 import com.chrisferdev.hus.domain.spi.output.IProductPersistencePort;
 import com.chrisferdev.hus.ports.driven.jpa.entity.ProductEntity;
 import com.chrisferdev.hus.ports.driven.jpa.mapper.ProductMapper;
+import com.chrisferdev.hus.ports.driven.jpa.repository.IBrandJpaRepository;
 import com.chrisferdev.hus.ports.driven.jpa.repository.IProductJpaRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -21,16 +22,18 @@ import java.util.Set;
 @Repository
 public class ProductJpaRepositoryImpl implements IProductPersistencePort {
     private final IProductJpaRepository iProductJpaRepository;
+    private final IBrandJpaRepository iBrandJpaRepository;
     private final ProductMapper productMapper;
 
-
-    public ProductJpaRepositoryImpl(IProductJpaRepository iProductJpaRepository, ProductMapper productMapper) {
+    public ProductJpaRepositoryImpl(IProductJpaRepository iProductJpaRepository, IBrandJpaRepository iBrandJpaRepository, ProductMapper productMapper) {
         this.iProductJpaRepository = iProductJpaRepository;
+        this.iBrandJpaRepository = iBrandJpaRepository;
         this.productMapper = productMapper;
     }
 
     private Pageable createPageable(int page, int size, String sortOrder) {
-        return PageRequest.of(page, size, "asc".equalsIgnoreCase(sortOrder) ? Sort.by("name").ascending() : Sort.by("name").descending());
+        return PageRequest.of(
+                page, size, "asc".equalsIgnoreCase(sortOrder) ? Sort.by("name").ascending() : Sort.by("name").descending());
     }
 
     @Override
@@ -59,8 +62,11 @@ public class ProductJpaRepositoryImpl implements IProductPersistencePort {
 
     @Override
     public PaginatedResult<Product> findProductsByName(String name, String sortOrder, int page, int size) {
+        if (!iProductJpaRepository.existsByName(name)) {
+            throw new ProductException(ProductException.ErrorType.PRODUCT_NOT_FOUND);
+        }
         Pageable pageable = createPageable(page, size, sortOrder);
-        Page<ProductEntity> pageResult = iProductJpaRepository.findAll(pageable);
+        Page<ProductEntity> pageResult = iProductJpaRepository.findProductByName(name, pageable);
         List<Product> products = pageResult.getContent().stream()
                 .map(productMapper::toProduct)
                 .toList();
@@ -70,6 +76,9 @@ public class ProductJpaRepositoryImpl implements IProductPersistencePort {
 
     @Override
     public PaginatedResult<Product> findProductsByBrand(Long brandId, String sortOrder, int page, int size) {
+        if (!iBrandJpaRepository.existsById(brandId)) {
+            throw new ProductException(ProductException.ErrorType.NO_BRAND);
+        }
         Pageable pageable = createPageable(page, size, sortOrder);
         Page<ProductEntity> pageResult = iProductJpaRepository.findByBrandEntityId(brandId, pageable);
         List<Product> products = pageResult.getContent().stream()
@@ -78,6 +87,7 @@ public class ProductJpaRepositoryImpl implements IProductPersistencePort {
         return new PaginatedResult<>(
                 products, pageResult.getNumber(), pageResult.getSize(), pageResult.getTotalElements());
     }
+
 
 
 }

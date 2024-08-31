@@ -7,6 +7,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface IProductJpaRepository extends JpaRepository<ProductEntity, Long> {
+    boolean existsByName(String name);
+    Page<ProductEntity> findProductByName(String  name, Pageable pageable);
     Page<ProductEntity> findByBrandEntityId(Long brandId, Pageable pageable);
 
 }
