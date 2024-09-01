@@ -37,7 +37,7 @@ class HusFiveTest {
         product.setQuantity(10);
         product.setPrice(BigDecimal.valueOf(99.99));
         product.setCategoryIds(List.of(1L, 2L)); // Valid categories
-        product.setBrandId(1); // Valid brand
+        product.setBrandId(1L); // Valid brand
 
         // Mock behavior Crea el objeto
         when(iProductPersistencePort.saveProduct(any(Product.class))).thenReturn(product);

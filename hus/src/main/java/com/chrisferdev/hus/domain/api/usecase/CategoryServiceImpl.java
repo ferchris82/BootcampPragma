@@ -1,8 +1,5 @@
 package com.chrisferdev.hus.domain.api.usecase;
 
-
-// Implementación de los casos de uso
-
 import com.chrisferdev.hus.configuration.exception.CategoryAlreadyExistsException;
 import com.chrisferdev.hus.domain.model.Category;
 import com.chrisferdev.hus.domain.model.PaginatedResult;

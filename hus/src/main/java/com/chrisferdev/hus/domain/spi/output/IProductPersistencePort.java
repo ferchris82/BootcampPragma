@@ -11,5 +11,4 @@ public interface IProductPersistencePort {
     PaginatedResult<Product> findProductsByName(String name, String sortOrder, int page, int size);
     PaginatedResult<Product> findProductsByBrand(Long brandId, String sortOrder, int page, int size);
 
-
 }

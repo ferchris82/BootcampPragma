@@ -16,6 +16,6 @@ public class Product {
     private String description;
     private Integer quantity;
     private BigDecimal price;
-    private Integer brandId;
+    private Long brandId;
     private List<Long> categoryIds;
 }
