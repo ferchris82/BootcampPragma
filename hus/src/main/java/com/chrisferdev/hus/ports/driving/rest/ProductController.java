@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+// Documentation http://localhost:8084/swagger-ui.html
+
 @RestController
 @RequestMapping("api/products")
 public class ProductController {
@@ -128,6 +130,24 @@ public class ProductController {
         PaginatedResult<Product> result = productServiceImpl.findProductsByBrand(brandId, sortOrder, page, size);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
+
+    @Operation(
+            summary = "Obtener productos por categoría",
+            description = "Obtiene una lista de productos paginadas y ordenadas según las categorías asociadas al producto.",
+            parameters = {
+                    @Parameter(name = "categoryIds", description = "Lista de IDs de categorías para filtrar. Ejemplo: 1,2,3", example = "1,2,3"),
+                    @Parameter(name = "sortOrder", description = "Orden de clasificación. Puede ser 'asc' para ascendente o 'desc' para descendente.", example = "asc"),
+                    @Parameter(name = "page", description = "Número de la página para la paginación.", example = "0"),
+                    @Parameter(name = "size", description = "Número de elementos por página.", example = "10"),
+                    @Parameter(name = "sortBy", description = "Campo por el cual ordenar los resultados. Puede ser 'name', 'brand', o 'category'.", example = "name")
+            }
+    )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Productos recuperados con éxito.",
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = PaginatedResult.class))),
+            @ApiResponse(responseCode = "400", description = "Solicitud inválida, por ejemplo, parámetros fuera de rango.",
+                    content = @Content(mediaType = "application/json"))
+    })
 
     @GetMapping("/by-category")
     public ResponseEntity<PaginatedResult<Product>> getProductsByCategory(

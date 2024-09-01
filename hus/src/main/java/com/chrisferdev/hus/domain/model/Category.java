@@ -1,10 +1,13 @@
 package com.chrisferdev.hus.domain.model;
 
+import com.chrisferdev.hus.ports.driven.jpa.entity.ProductEntity;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -19,5 +22,7 @@ public class Category {
     @NotBlank(message = "La descripción es obligatoria")
     @Size(max = 90, message = "La descripción no puede exceder los 90 caracteres")
     private String description;
+
+    private List<ProductEntity> products;
 
 }
