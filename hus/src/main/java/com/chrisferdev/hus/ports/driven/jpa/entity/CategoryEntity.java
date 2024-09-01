@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Table(name = "categories")
 @Data
@@ -17,4 +19,7 @@ public class CategoryEntity {
     private String name;
     @Column(length = 90)
     private String description;
+
+    @ManyToMany(mappedBy = "categoryEntities")
+    private List<ProductEntity> products;
 }

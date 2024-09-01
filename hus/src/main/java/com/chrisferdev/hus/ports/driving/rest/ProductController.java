@@ -15,6 +15,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("api/products")
 public class ProductController {
@@ -124,6 +126,17 @@ public class ProductController {
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
         PaginatedResult<Product> result = productServiceImpl.findProductsByBrand(brandId, sortOrder, page, size);
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    @GetMapping("/by-category")
+    public ResponseEntity<PaginatedResult<Product>> getProductsByCategory(
+            @RequestParam List<Long> categoryIds,
+            @RequestParam(defaultValue = "asc") String sortOrder,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "name") String sortBy) {
+        PaginatedResult<Product> result = productServiceImpl.findProductsByCategory(categoryIds, sortOrder, page, size, sortBy);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }

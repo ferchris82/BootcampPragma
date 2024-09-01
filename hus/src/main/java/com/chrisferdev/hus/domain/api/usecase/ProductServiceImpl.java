@@ -6,6 +6,8 @@ import com.chrisferdev.hus.domain.model.Product;
 import com.chrisferdev.hus.domain.spi.output.IProductPersistencePort;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ProductServiceImpl {
     private final IProductPersistencePort iProductPersistencePort;
@@ -29,6 +31,10 @@ public class ProductServiceImpl {
 
     public PaginatedResult<Product> findProductsByBrand(Long brandId, String sortOrder, int page, int size) {
         return iProductPersistencePort.findProductsByBrand(brandId, sortOrder, page, size);
+    }
+
+    public PaginatedResult<Product> findProductsByCategory(List<Long> categoryIds, String sortOrder, int page, int size, String sortBy) {
+        return iProductPersistencePort.findProductsByCategory(categoryIds, sortOrder, page, size, sortBy);
     }
 
 }

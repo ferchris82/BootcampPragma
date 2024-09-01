@@ -88,6 +88,17 @@ public class ProductJpaRepositoryImpl implements IProductPersistencePort {
                 products, pageResult.getNumber(), pageResult.getSize(), pageResult.getTotalElements());
     }
 
+    @Override
+    public PaginatedResult<Product> findProductsByCategory(List<Long> categoryIds, String sortOrder, int page, int size, String sortBy) {
+        Pageable pageable = createPageable(page, size, sortOrder);
+        Page<ProductEntity> pageResult = iProductJpaRepository.findByCategoryIds(categoryIds, pageable);
+        List<Product> products = pageResult.getContent().stream()
+                .map(productMapper::toProduct)
+                .toList();
 
+        return new PaginatedResult<>(
+                products, pageResult.getNumber(), pageResult.getSize(), pageResult.getTotalElements());
+
+    }
 
 }
