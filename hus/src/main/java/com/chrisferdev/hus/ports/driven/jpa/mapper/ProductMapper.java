@@ -19,6 +19,7 @@ public interface ProductMapper {
     @Mapping(source = "price", target = "price")
     @Mapping(source = "brandEntity.id", target = "brandId")
     @Mapping(source = "categoryEntities", target = "categoryIds")
+    @Mapping(source = "categoryEntities", target = "categoryNames")
     Product toProduct(ProductEntity productEntity);
 
     Iterable<Product> toProductList(Iterable<ProductEntity> productEntities);
@@ -40,6 +41,12 @@ public interface ProductMapper {
                     category.setId(id);
                     return category;
                 })
+                .toList();
+    }
+
+    default List<String> mapCategoriesToNames(List<CategoryEntity> categoryEntities) {
+        return categoryEntities.stream()
+                .map(CategoryEntity::getName)
                 .toList();
     }
 }

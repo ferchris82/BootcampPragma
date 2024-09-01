@@ -54,7 +54,7 @@ public class ProductJpaRepositoryImpl implements IProductPersistencePort {
         Pageable pageable = createPageable(page, size, sortOrder);
         Page<ProductEntity> pageResult = iProductJpaRepository.findAll(pageable);
         List<Product> products = pageResult.getContent().stream()
-                .map(productMapper::toProduct)
+                .map(productMapper::toProduct) // Usamos el nuevo método del mapper
                 .toList();
         return new PaginatedResult<>(
                 products, pageResult.getNumber(), pageResult.getSize(), pageResult.getTotalElements());

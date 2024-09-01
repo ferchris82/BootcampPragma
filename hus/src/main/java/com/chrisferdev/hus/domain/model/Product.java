@@ -18,4 +18,5 @@ public class Product {
     private BigDecimal price;
     private Long brandId;
     private List<Long> categoryIds;
+    private List<String> categoryNames;
 }
