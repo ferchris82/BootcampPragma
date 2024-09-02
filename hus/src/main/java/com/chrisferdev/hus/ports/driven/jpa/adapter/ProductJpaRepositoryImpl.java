@@ -1,6 +1,9 @@
 package com.chrisferdev.hus.ports.driven.jpa.adapter;
 
-import com.chrisferdev.hus.configuration.exception.ProductException;
+import com.chrisferdev.hus.configuration.exception.AddProductException;
+import com.chrisferdev.hus.configuration.exception.FindProductByBrandException;
+import com.chrisferdev.hus.configuration.exception.FindProductException;
+import com.chrisferdev.hus.configuration.exception.exceptionhandler.ExceptionResponse;
 import com.chrisferdev.hus.domain.model.PaginatedResult;
 import com.chrisferdev.hus.domain.model.Product;
 import com.chrisferdev.hus.domain.spi.output.IProductPersistencePort;
@@ -42,7 +45,7 @@ public class ProductJpaRepositoryImpl implements IProductPersistencePort {
         Set<Long> uniqueCategoryIds = new HashSet<>(categoryIds);
 
         if (categoryIds.isEmpty() || categoryIds.size() > 3 || categoryIds.size() != uniqueCategoryIds.size()) {
-            throw new ProductException(ProductException.ErrorType.ERROR_CATEGORY);
+            throw new AddProductException(ExceptionResponse.ERROR_CATEGORY.getMessage());
         }
 
         return productMapper.toProduct(
@@ -63,7 +66,7 @@ public class ProductJpaRepositoryImpl implements IProductPersistencePort {
     @Override
     public PaginatedResult<Product> findProductsByName(String name, String sortOrder, int page, int size) {
         if (!iProductJpaRepository.existsByName(name)) {
-            throw new ProductException(ProductException.ErrorType.PRODUCT_NOT_FOUND);
+            throw new FindProductException(ExceptionResponse.PRODUCT_NOT_FOUND.getMessage());
         }
         Pageable pageable = createPageable(page, size, sortOrder);
         Page<ProductEntity> pageResult = iProductJpaRepository.findProductByName(name, pageable);
@@ -77,7 +80,7 @@ public class ProductJpaRepositoryImpl implements IProductPersistencePort {
     @Override
     public PaginatedResult<Product> findProductsByBrand(Long brandId, String sortOrder, int page, int size) {
         if (!iBrandJpaRepository.existsById(brandId)) {
-            throw new ProductException(ProductException.ErrorType.NO_BRAND);
+            throw new FindProductByBrandException(ExceptionResponse.PRODUCTBRAND_NOT_FOUND.getMessage());
         }
         Pageable pageable = createPageable(page, size, sortOrder);
         Page<ProductEntity> pageResult = iProductJpaRepository.findByBrandEntityId(brandId, pageable);

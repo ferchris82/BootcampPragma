@@ -1,9 +1,7 @@
 package com.chrisferdev.hus.configuration.exception.exceptionhandler;
 
 
-import com.chrisferdev.hus.configuration.exception.BrandAlreadyExistsException;
-import com.chrisferdev.hus.configuration.exception.CategoryAlreadyExistsException;
-import com.chrisferdev.hus.configuration.exception.ProductException;
+import com.chrisferdev.hus.configuration.exception.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -24,43 +22,46 @@ public class ControllerAdvisor {
                 .body(Collections.singletonMap(MESSAGE, ExceptionResponse.CATEGORY_ALREADY_EXISTS.getMessage()));
     }
 
-    @ExceptionHandler(IllegalArgumentException.class)
-    public ResponseEntity<Map<String, String>> handleIllegalArgumentException(
-            IllegalArgumentException illegalArgumentException) {
+    @ExceptionHandler(CategoryInvalidException.class)
+    public ResponseEntity<Map<String, String>> handleCategoryInvalidException(
+            CategoryInvalidException categoryException) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                 .body(Collections.singletonMap(MESSAGE, ExceptionResponse.INVALID_CATEGORY.getMessage()));
     }
 
-    @ExceptionHandler(BrandAlreadyExistsException.class)
-    public ResponseEntity<Map<String, String>> handleBrandAlreadyExistsException(
-            BrandAlreadyExistsException brandAlreadyExistsException) {
+    @ExceptionHandler(BrandAlreadyException.class)
+    public ResponseEntity<Map<String, String>> handleBrandInvalidException(
+            BrandInvalidException brandAlreadyException) {
         return ResponseEntity.status(HttpStatus.CONFLICT)
                 .body(Collections.singletonMap(MESSAGE, ExceptionResponse.BRAND_ALREADY_EXISTS.getMessage()));
     }
 
-    @ExceptionHandler(ProductException.class)
-    public ResponseEntity<Map<String, String>> handleProductException(ProductException productException) {
-        ExceptionResponse response;
+    @ExceptionHandler(BrandInvalidException.class)
+    public ResponseEntity<Map<String, String>> handleBrandAlreadyExistsException(
+            BrandInvalidException brandInvalidException) {
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body(Collections.singletonMap(MESSAGE, ExceptionResponse.INVALID_BRAND.getMessage()));
+    }
 
-        switch (productException.getErrorType()) {
-            case ERROR_CATEGORY:
-                response = ExceptionResponse.ERROR_CATEGORY;
-                break;
-            case TOO_MANY_CATEGORIES:
-                response = ExceptionResponse.TOO_MANY_CATEGORIES;
-                break;
-            case NO_BRAND:
-                response = ExceptionResponse.NO_BRAND;
-                break;
-            case PRODUCT_NOT_FOUND:
-                response = ExceptionResponse.PRODUCT_NOT_FOUND;
-                break;
-            default:
-                response = ExceptionResponse.INVALID_CATEGORY;
-        }
+    @ExceptionHandler(AddProductException.class)
+    public ResponseEntity<Map<String, String>> handleProductWithoutCategory(
+            AddProductException productException) {
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body(Collections.singletonMap(MESSAGE, ExceptionResponse.ERROR_CATEGORY.getMessage()));
+    }
 
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                .body(Collections.singletonMap(MESSAGE, response.getMessage()));
+    @ExceptionHandler(FindProductException.class)
+    public ResponseEntity<Map<String, String>> handleProductNoFound(
+            FindProductException findProductException) {
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body(Collections.singletonMap(MESSAGE, ExceptionResponse.PRODUCT_NOT_FOUND.getMessage()));
+    }
+
+    @ExceptionHandler(FindProductByBrandException.class)
+    public ResponseEntity<Map<String, String>> handleBrandNotFound(
+            FindProductByBrandException findProductByBrandException) {
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body(Collections.singletonMap(MESSAGE, ExceptionResponse.PRODUCTBRAND_NOT_FOUND.getMessage()));
     }
 
 }

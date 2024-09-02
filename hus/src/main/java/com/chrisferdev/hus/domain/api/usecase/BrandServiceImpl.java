@@ -1,6 +1,5 @@
 package com.chrisferdev.hus.domain.api.usecase;
 
-import com.chrisferdev.hus.configuration.exception.CategoryAlreadyExistsException;
 import com.chrisferdev.hus.domain.model.Brand;
 import com.chrisferdev.hus.domain.model.PaginatedResult;
 import com.chrisferdev.hus.domain.spi.output.IBrandPersistencePort;
@@ -14,12 +13,7 @@ public class BrandServiceImpl {
         this.iBrandPersistencePort = iBrandPersistencePort;
     }
 
-
-    public Brand saveBrand(Brand brand){
-        if(iBrandPersistencePort.existsByName(brand.getName())){
-            throw new CategoryAlreadyExistsException("La categoría con el nombre " + brand.getName() + " ya existe.");
-
-        }
+    public Brand saveBrand(Brand brand) {
         return iBrandPersistencePort.saveBrand(brand);
     }
 

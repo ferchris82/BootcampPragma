@@ -29,12 +29,18 @@ public interface ProductMapper {
     ProductEntity toProductEntity(Product product);
 
     default List<Long> mapCategories(List<CategoryEntity> categoryEntities) {
+        if (categoryEntities == null) {
+            return List.of();  // Retorna una lista vacía si categoryEntities es null
+        }
         return categoryEntities.stream()
                 .map(CategoryEntity::getId)
                 .toList();
     }
 
     default List<CategoryEntity> mapCategoryIds(List<Long> categoryIds) {
+        if (categoryIds == null) {
+            return List.of();  // Retorna una lista vacía si categoryIds es null
+        }
         return categoryIds.stream()
                 .map(id -> {
                     CategoryEntity category = new CategoryEntity();
@@ -45,6 +51,9 @@ public interface ProductMapper {
     }
 
     default List<String> mapCategoriesToNames(List<CategoryEntity> categoryEntities) {
+        if (categoryEntities == null) {
+            return List.of();  // Retorna una lista vacía si categoryEntities es null
+        }
         return categoryEntities.stream()
                 .map(CategoryEntity::getName)
                 .toList();

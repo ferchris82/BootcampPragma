@@ -2,7 +2,7 @@ package com.chrisferdev.hus.ports.driven.jpa.adapter;
 
 
 
-import com.chrisferdev.hus.configuration.exception.BrandAlreadyExistsException;
+import com.chrisferdev.hus.configuration.exception.BrandInvalidException;
 import com.chrisferdev.hus.configuration.exception.exceptionhandler.ExceptionResponse;
 import com.chrisferdev.hus.domain.model.Brand;
 import com.chrisferdev.hus.domain.model.PaginatedResult;
@@ -32,7 +32,7 @@ public class BrandJpaRepositoryImpl implements IBrandPersistencePort {
     @Override
     public Brand saveBrand(Brand brand) {
         if(existsByName(brand.getName())){
-            throw new BrandAlreadyExistsException(ExceptionResponse.BRAND_ALREADY_EXISTS.getMessage());
+            throw new BrandInvalidException(ExceptionResponse.BRAND_ALREADY_EXISTS.getMessage());
         }
         if(brand.getDescription().trim().isEmpty() || brand.getName().trim().isEmpty()){
             throw new IllegalArgumentException(ExceptionResponse.INVALID_BRAND.getMessage());
