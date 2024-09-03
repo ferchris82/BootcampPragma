@@ -7,11 +7,11 @@ import com.chrisferdev.hus.configuration.exception.exceptionhandler.ExceptionRes
 import com.chrisferdev.hus.domain.model.PaginatedResult;
 import com.chrisferdev.hus.domain.model.Product;
 import com.chrisferdev.hus.domain.spi.output.IProductPersistencePort;
-import com.chrisferdev.hus.ports.driven.jpa.mapper.ProductMapper;
-import com.chrisferdev.hus.ports.driven.jpa.repository.IBrandJpaRepository;
-import com.chrisferdev.hus.ports.driven.jpa.repository.IProductJpaRepository;
+import com.chrisferdev.hus.infrastructure.driven.jpa.mapper.ProductMapper;
+import com.chrisferdev.hus.infrastructure.driven.jpa.repository.IBrandJpaRepository;
+import com.chrisferdev.hus.infrastructure.driven.jpa.repository.IProductJpaRepository;
 
-import com.chrisferdev.hus.ports.driving.dto.response.ProductResponseDTO;
+import com.chrisferdev.hus.infrastructure.driving.dto.response.ProductResponseDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;

@@ -3,7 +3,7 @@ package com.chrisferdev.hus.domain.spi.output;
 
 import com.chrisferdev.hus.domain.model.PaginatedResult;
 import com.chrisferdev.hus.domain.model.Product;
-import com.chrisferdev.hus.ports.driving.dto.response.ProductResponseDTO;
+import com.chrisferdev.hus.infrastructure.driving.dto.response.ProductResponseDTO;
 
 import java.util.List;
 

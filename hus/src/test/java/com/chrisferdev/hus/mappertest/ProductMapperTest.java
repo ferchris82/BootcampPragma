@@ -1,9 +1,9 @@
 package com.chrisferdev.hus.mappertest;
 
 import com.chrisferdev.hus.domain.model.Product;
-import com.chrisferdev.hus.ports.driven.jpa.entity.CategoryEntity;
-import com.chrisferdev.hus.ports.driven.jpa.entity.ProductEntity;
-import com.chrisferdev.hus.ports.driven.jpa.mapper.ProductMapper;
+import com.chrisferdev.hus.infrastructure.driven.jpa.entity.CategoryEntity;
+import com.chrisferdev.hus.infrastructure.driven.jpa.entity.ProductEntity;
+import com.chrisferdev.hus.infrastructure.driven.jpa.mapper.ProductMapper;
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
 

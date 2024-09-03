@@ -1,6 +1,6 @@
 package com.chrisferdev.hus.domain.model;
 
-import com.chrisferdev.hus.ports.driven.jpa.entity.ProductEntity;
+import com.chrisferdev.hus.infrastructure.driven.jpa.entity.ProductEntity;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;

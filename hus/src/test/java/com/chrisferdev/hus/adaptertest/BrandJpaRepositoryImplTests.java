@@ -4,10 +4,10 @@ import com.chrisferdev.hus.configuration.exception.BrandInvalidException;
 import com.chrisferdev.hus.configuration.exception.exceptionhandler.ExceptionResponse;
 import com.chrisferdev.hus.domain.model.Brand;
 import com.chrisferdev.hus.domain.model.PaginatedResult;
-import com.chrisferdev.hus.ports.driven.jpa.adapter.BrandJpaRepositoryImpl;
-import com.chrisferdev.hus.ports.driven.jpa.entity.BrandEntity;
-import com.chrisferdev.hus.ports.driven.jpa.mapper.BrandMapper;
-import com.chrisferdev.hus.ports.driven.jpa.repository.IBrandJpaRepository;
+import com.chrisferdev.hus.infrastructure.driven.jpa.adapter.BrandJpaRepositoryImpl;
+import com.chrisferdev.hus.infrastructure.driven.jpa.entity.BrandEntity;
+import com.chrisferdev.hus.infrastructure.driven.jpa.mapper.BrandMapper;
+import com.chrisferdev.hus.infrastructure.driven.jpa.repository.IBrandJpaRepository;
 import org.junit.jupiter.api.BeforeEach;
 
 import org.junit.jupiter.api.Test;

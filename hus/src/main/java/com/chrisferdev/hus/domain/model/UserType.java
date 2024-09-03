@@ -1,5 +1,5 @@
 package com.chrisferdev.hus.domain.model;
 
 public enum UserType {
-    ADMIN, USER
+    ADMIN, USER, AUX_BODEGA
 }

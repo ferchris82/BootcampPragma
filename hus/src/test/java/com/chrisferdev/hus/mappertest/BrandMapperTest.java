@@ -1,8 +1,8 @@
 package com.chrisferdev.hus.mappertest;
 
 import com.chrisferdev.hus.domain.model.Brand;
-import com.chrisferdev.hus.ports.driven.jpa.entity.BrandEntity;
-import com.chrisferdev.hus.ports.driven.jpa.mapper.BrandMapper;
+import com.chrisferdev.hus.infrastructure.driven.jpa.entity.BrandEntity;
+import com.chrisferdev.hus.infrastructure.driven.jpa.mapper.BrandMapper;
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
 

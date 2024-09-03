@@ -1,8 +1,8 @@
 package com.chrisferdev.hus.mappertest;
 
 import com.chrisferdev.hus.domain.model.Category;
-import com.chrisferdev.hus.ports.driven.jpa.entity.CategoryEntity;
-import com.chrisferdev.hus.ports.driven.jpa.mapper.CategoryMapper;
+import com.chrisferdev.hus.infrastructure.driven.jpa.entity.CategoryEntity;
+import com.chrisferdev.hus.infrastructure.driven.jpa.mapper.CategoryMapper;
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
 
