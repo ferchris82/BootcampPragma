@@ -64,4 +64,11 @@ public class ControllerAdvisor {
                 .body(Collections.singletonMap(MESSAGE, ExceptionResponse.PRODUCTBRAND_NOT_FOUND.getMessage()));
     }
 
+    @ExceptionHandler(ProductSaveException.class)
+    public ResponseEntity<Map<String, String>> handleProductNotSave(
+            ProductSaveException productSaveException) {
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body(Collections.singletonMap(MESSAGE, ExceptionResponse.PRODUCT_NOT_SAVE.getMessage()));
+    }
+
 }

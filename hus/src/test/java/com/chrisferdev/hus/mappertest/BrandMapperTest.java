@@ -1,4 +1,4 @@
-package com.chrisferdev.hus.mapper;
+package com.chrisferdev.hus.mappertest;
 
 import com.chrisferdev.hus.domain.model.Brand;
 import com.chrisferdev.hus.ports.driven.jpa.entity.BrandEntity;

@@ -1,4 +1,4 @@
-package com.chrisferdev.hus.adapter;
+package com.chrisferdev.hus.adaptertest;
 
 import com.chrisferdev.hus.configuration.exception.CategoryAlreadyExistsException;
 import com.chrisferdev.hus.domain.model.Category;

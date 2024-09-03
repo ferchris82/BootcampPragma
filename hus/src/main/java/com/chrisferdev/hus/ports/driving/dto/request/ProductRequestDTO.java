@@ -31,7 +31,5 @@ public class ProductRequestDTO {
     @NotNull(message = "The brand ID is required.")
     private Long brandId;
 
-    /*@NotNull(message = "At least one category ID is required.")
-    private List<Long> categoryIds;*/
 
 }
