@@ -14,7 +14,7 @@ public enum ExceptionResponse {
     NO_BRAND("El producto debe tener una marca asociada"),
     PRODUCT_NOT_SAVE("El producto no se guardo"),
     PRODUCT_NOT_FOUND("El producto no fue encontrado"),
-    PRODUCTBRAND_NOT_FOUND("El producto con la marca no fue encontrado");
+    PRODUCTBRAND_NOT_FOUND("La marca no fue encontrada");
 
     private String message;
 

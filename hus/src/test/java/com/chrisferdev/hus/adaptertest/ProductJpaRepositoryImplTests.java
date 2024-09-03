@@ -33,7 +33,7 @@ class ProductJpaRepositoryImplTest {
         iProductJpaRepository = mock(IProductJpaRepository.class);
         iBrandJpaRepository = mock(IBrandJpaRepository.class);
         productMapper = mock(ProductMapper.class);
-        productJpaRepositoryImpl = new ProductJpaRepositoryImpl(iProductJpaRepository, iBrandJpaRepository, productMapper);
+        productJpaRepositoryImpl = new ProductJpaRepositoryImpl(iProductJpaRepository, productMapper);
     }
 
     @Test
