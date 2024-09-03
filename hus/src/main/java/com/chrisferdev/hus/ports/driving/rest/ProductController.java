@@ -4,6 +4,7 @@ import com.chrisferdev.hus.configuration.exception.exceptionhandler.ExceptionRes
 import com.chrisferdev.hus.domain.api.usecase.ProductServiceImpl;
 import com.chrisferdev.hus.domain.model.PaginatedResult;
 import com.chrisferdev.hus.domain.model.Product;
+import com.chrisferdev.hus.ports.driving.dto.response.ProductResponseDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -56,11 +57,11 @@ public class ProductController {
             )
     })
     @GetMapping
-    public ResponseEntity<PaginatedResult<Product>> getProducts(
+    public ResponseEntity<PaginatedResult<ProductResponseDTO>> getProducts(
             @RequestParam(defaultValue = "asc") @Parameter(description = "Orden de clasificación. Puede ser 'asc' para ascendente o 'desc' para descendente.", example = "asc") String sortOrder,
             @RequestParam(defaultValue = "0") @Parameter(description = "Número de la página para la paginación.", example = "0") int page,
             @RequestParam(defaultValue = "10") @Parameter(description = "Número de elementos por página.", example = "10") int size) {
-        PaginatedResult<Product> result = productServiceImpl.findAllProducts(sortOrder, page, size);
+        PaginatedResult<ProductResponseDTO> result = productServiceImpl.findAllProducts(sortOrder, page, size);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 

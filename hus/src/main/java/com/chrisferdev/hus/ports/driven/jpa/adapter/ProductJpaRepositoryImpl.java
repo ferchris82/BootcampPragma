@@ -6,6 +6,8 @@ import com.chrisferdev.hus.domain.spi.output.IProductPersistencePort;
 import com.chrisferdev.hus.ports.driven.jpa.entity.ProductEntity;
 import com.chrisferdev.hus.ports.driven.jpa.mapper.ProductMapper;
 import com.chrisferdev.hus.ports.driven.jpa.repository.IProductJpaRepository;
+import com.chrisferdev.hus.ports.driving.dto.response.ProductResponseDTO;
+import com.chrisferdev.hus.ports.driving.mapper.ProductResponseMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -20,10 +22,12 @@ import java.util.List;
 public class ProductJpaRepositoryImpl implements IProductPersistencePort {
     private final IProductJpaRepository iProductJpaRepository;
     private final ProductMapper productMapper;
+    private final ProductResponseMapper productResponseMapper;
 
-    public ProductJpaRepositoryImpl(IProductJpaRepository iProductJpaRepository, ProductMapper productMapper) {
+    public ProductJpaRepositoryImpl(IProductJpaRepository iProductJpaRepository, ProductMapper productMapper, ProductResponseMapper productResponseMapper) {
         this.iProductJpaRepository = iProductJpaRepository;
         this.productMapper = productMapper;
+        this.productResponseMapper = productResponseMapper;
     }
 
     private Pageable createPageable(int page, int size, String sortOrder) {
@@ -38,11 +42,11 @@ public class ProductJpaRepositoryImpl implements IProductPersistencePort {
     }
 
     @Override
-    public PaginatedResult<Product> findAllProducts(String sortOrder, int page, int size) {
+    public PaginatedResult<ProductResponseDTO> findAllProducts(String sortOrder, int page, int size) {
         Pageable pageable = createPageable(page, size, sortOrder);
         Page<ProductEntity> pageResult = iProductJpaRepository.findAll(pageable);
-        List<Product> products = pageResult.getContent().stream()
-                .map(productMapper::toProduct)
+        List<ProductResponseDTO> products = pageResult.getContent().stream()
+                .map(productResponseMapper::toProductResponseDTO)
                 .toList();
         return new PaginatedResult<>(
                 products, pageResult.getNumber(), pageResult.getSize(), pageResult.getTotalElements());

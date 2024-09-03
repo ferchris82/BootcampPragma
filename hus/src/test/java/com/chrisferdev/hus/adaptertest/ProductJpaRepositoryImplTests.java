@@ -11,6 +11,8 @@ import com.chrisferdev.hus.ports.driven.jpa.entity.ProductEntity;
 import com.chrisferdev.hus.ports.driven.jpa.mapper.ProductMapper;
 import com.chrisferdev.hus.ports.driven.jpa.repository.IBrandJpaRepository;
 import com.chrisferdev.hus.ports.driven.jpa.repository.IProductJpaRepository;
+import com.chrisferdev.hus.ports.driving.dto.response.ProductResponseDTO;
+import com.chrisferdev.hus.ports.driving.mapper.ProductResponseMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.data.domain.*;
@@ -26,6 +28,7 @@ class ProductJpaRepositoryImplTest {
     private IProductJpaRepository iProductJpaRepository;
     private IBrandJpaRepository iBrandJpaRepository;
     private ProductMapper productMapper;
+    private ProductResponseMapper productResponseMapper;
     private ProductJpaRepositoryImpl productJpaRepositoryImpl;
 
     @BeforeEach
@@ -33,7 +36,8 @@ class ProductJpaRepositoryImplTest {
         iProductJpaRepository = mock(IProductJpaRepository.class);
         iBrandJpaRepository = mock(IBrandJpaRepository.class);
         productMapper = mock(ProductMapper.class);
-        productJpaRepositoryImpl = new ProductJpaRepositoryImpl(iProductJpaRepository, productMapper);
+        productResponseMapper = mock(ProductResponseMapper.class);
+        productJpaRepositoryImpl = new ProductJpaRepositoryImpl(iProductJpaRepository, productMapper, productResponseMapper);
     }
 
     @Test
@@ -86,7 +90,7 @@ class ProductJpaRepositoryImplTest {
         when(iProductJpaRepository.findAll(pageable)).thenReturn(productPage);
         when(productMapper.toProduct(any(ProductEntity.class))).thenReturn(product);
 
-        PaginatedResult<Product> result = productJpaRepositoryImpl.findAllProducts("asc", 0, 1);
+        PaginatedResult<ProductResponseDTO> result = productJpaRepositoryImpl.findAllProducts("asc", 0, 1);
 
         assertNotNull(result);
         assertEquals(1, result.getTotalElements());

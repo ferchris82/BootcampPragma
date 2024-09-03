@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -15,5 +16,8 @@ public class ProductResponseDTO {
     private String description;
     private Integer quantity;
     private BigDecimal price;
+
     private String brandName;
+    private List<Long> categoryIds;
+    private List<String> categoryNames;
 }

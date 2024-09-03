@@ -11,6 +11,7 @@ import com.chrisferdev.hus.ports.driven.jpa.mapper.ProductMapper;
 import com.chrisferdev.hus.ports.driven.jpa.repository.IBrandJpaRepository;
 import com.chrisferdev.hus.ports.driven.jpa.repository.IProductJpaRepository;
 
+import com.chrisferdev.hus.ports.driving.dto.response.ProductResponseDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -44,7 +45,7 @@ public class ProductServiceImpl {
                 iProductJpaRepository.save(productMapper.toProductEntity(product)));
     }
 
-    public PaginatedResult<Product> findAllProducts(String sortOrder, int page, int size) {
+    public PaginatedResult<ProductResponseDTO> findAllProducts(String sortOrder, int page, int size) {
         try {
             return iProductPersistencePort.findAllProducts(sortOrder, page, size);
         } catch (Exception e) {
