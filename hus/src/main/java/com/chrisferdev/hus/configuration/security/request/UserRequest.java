@@ -14,6 +14,8 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class UserRequest {
 
+    private Long id;
+    
     @NotBlank(message = "The name is required.")
     private String firstname;
 
