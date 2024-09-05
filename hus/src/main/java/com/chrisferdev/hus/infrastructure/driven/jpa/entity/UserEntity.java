@@ -1,5 +1,6 @@
 package com.chrisferdev.hus.infrastructure.driven.jpa.entity;
 
+import com.chrisferdev.hus.domain.model.UserType;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,4 +24,6 @@ public class UserEntity {
     private LocalDate birthDate;
     private String email;
     private String password;
+
+    private UserType userType;
 }

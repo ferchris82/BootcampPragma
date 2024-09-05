@@ -1,6 +1,7 @@
 package com.chrisferdev.hus.configuration.security.request;
 
 
+import com.chrisferdev.hus.domain.model.UserType;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -15,7 +16,7 @@ import java.time.LocalDate;
 public class UserRequest {
 
     private Long id;
-    
+
     @NotBlank(message = "The name is required.")
     private String firstname;
 
@@ -36,4 +37,6 @@ public class UserRequest {
 
     @NotBlank(message = "The password is required.")
     private String password;
+
+    private UserType userType;
 }
