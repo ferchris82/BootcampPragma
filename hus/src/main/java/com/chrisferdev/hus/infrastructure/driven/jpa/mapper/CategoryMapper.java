@@ -14,7 +14,7 @@ public interface CategoryMapper {
     Category toCategory(CategoryEntity categoryEntity);
 
     Iterable<Category> toCategoryList(Iterable<CategoryEntity> categoryEntities);
-    
+
     @InheritInverseConfiguration
     @Mapping(target = "products", ignore = true)
     CategoryEntity toCategoryEntity(Category category);
