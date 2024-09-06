@@ -63,7 +63,7 @@ public class ProductServiceImpl {
 
     public PaginatedResult<Product> findProductsByBrand(Long brandId, String sortOrder, int page, int size) {
         if (!iBrandJpaRepository.existsById(brandId)) {
-            throw new FindProductByBrandException(ExceptionResponse.PRODUCTBRAND_NOT_FOUND.getMessage());
+            throw new FindProductByBrandException(ExceptionResponse.PRODUCT_BRAND_NOT_FOUND.getMessage());
         }
         return iProductPersistencePort.findProductsByBrand(brandId, sortOrder, page, size);
 

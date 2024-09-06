@@ -61,7 +61,7 @@ public class ControllerAdvisor {
     public ResponseEntity<Map<String, String>> handleBrandNotFound(
             FindProductByBrandException findProductByBrandException) {
         return ResponseEntity.status(HttpStatus.CONFLICT)
-                .body(Collections.singletonMap(MESSAGE, ExceptionResponse.PRODUCTBRAND_NOT_FOUND.getMessage()));
+                .body(Collections.singletonMap(MESSAGE, ExceptionResponse.PRODUCT_BRAND_NOT_FOUND.getMessage()));
     }
 
     @ExceptionHandler(ProductSaveException.class)
@@ -69,6 +69,34 @@ public class ControllerAdvisor {
             ProductSaveException productSaveException) {
         return ResponseEntity.status(HttpStatus.CONFLICT)
                 .body(Collections.singletonMap(MESSAGE, ExceptionResponse.PRODUCT_NOT_SAVE.getMessage()));
+    }
+
+    @ExceptionHandler(DocumentException.class)
+    public ResponseEntity<Map<String, String>> handleDocumentException(
+            DocumentException documentException) {
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body(Collections.singletonMap(MESSAGE, ExceptionResponse.ERROR_DOCUMENT_ID.getMessage()));
+    }
+
+    @ExceptionHandler(EmailException.class)
+    public ResponseEntity<Map<String, String>> handleEmailException(
+            EmailException emailException) {
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body(Collections.singletonMap(MESSAGE, ExceptionResponse.ERROR_EMAIL.getMessage()));
+    }
+
+    @ExceptionHandler(PhoneException.class)
+    public ResponseEntity<Map<String, String>> handlePhoneException(
+            PhoneException phoneException) {
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body(Collections.singletonMap(MESSAGE, ExceptionResponse.ERROR_PHONE.getMessage()));
+    }
+
+    @ExceptionHandler(BirthDathException.class)
+    public ResponseEntity<Map<String, String>> handleBirthDateException(
+            BirthDathException birthDathException) {
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body(Collections.singletonMap(MESSAGE, ExceptionResponse.ERROR_BIRTHDATE.getMessage()));
     }
 
 }

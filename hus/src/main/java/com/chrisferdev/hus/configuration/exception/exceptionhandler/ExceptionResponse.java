@@ -14,7 +14,11 @@ public enum ExceptionResponse {
     NO_BRAND("El producto debe tener una marca asociada"),
     PRODUCT_NOT_SAVE("El producto no se guardo"),
     PRODUCT_NOT_FOUND("El producto no fue encontrado"),
-    PRODUCTBRAND_NOT_FOUND("La marca no fue encontrada");
+    PRODUCT_BRAND_NOT_FOUND("La marca no fue encontrada"),
+    ERROR_DOCUMENT_ID("El documento no es valido"),
+    ERROR_EMAIL("El correo no es válido"),
+    ERROR_BIRTHDATE("El usuario debe ser mayor de edad"),
+    ERROR_PHONE("El teléfono es obligatorio y debe tener un máximo de 13 caracteres, puede contener el símbolo +.");
 
     private String message;
 

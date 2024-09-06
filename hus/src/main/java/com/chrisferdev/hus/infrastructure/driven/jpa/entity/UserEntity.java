@@ -19,7 +19,7 @@ public class UserEntity {
 
     private String firstname;
     private String lastname;
-    private String documentId;
+    private Integer documentId;
     private String phoneNumber;
     private LocalDate birthDate;
     private String email;
