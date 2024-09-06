@@ -8,6 +8,7 @@ import com.chrisferdev.hus.configuration.exception.exceptionhandler.ExceptionRes
 import com.chrisferdev.hus.infrastructure.driving.dto.request.UserRequest;
 import com.chrisferdev.hus.domain.model.UserType;
 import com.chrisferdev.hus.domain.spi.output.IUserPersistencePort;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -18,12 +19,13 @@ import java.util.regex.Pattern;
 public class UserServiceImpl {
 
     private final IUserPersistencePort iUserPersistencePort;
+    private final BCryptPasswordEncoder passwordEncoder;
 
-    public UserServiceImpl(IUserPersistencePort iUserPersistencePort) {
+    public UserServiceImpl(IUserPersistencePort iUserPersistencePort, BCryptPasswordEncoder passwordEncoder) {
         this.iUserPersistencePort = iUserPersistencePort;
+        this.passwordEncoder = passwordEncoder;
     }
-
-
+    
     public UserRequest saveUser(UserRequest userRequest) {
         validateUserRequest(userRequest);
         if (userRequest.getUserType() == null) {
