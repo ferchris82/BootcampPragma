@@ -1,4 +1,4 @@
-package com.chrisferdev.hus.configuration.security.request;
+package com.chrisferdev.hus.infrastructure.driving.dto.request;
 
 
 import com.chrisferdev.hus.domain.model.UserType;

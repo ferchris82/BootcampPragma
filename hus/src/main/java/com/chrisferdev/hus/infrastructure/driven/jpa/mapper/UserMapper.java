@@ -1,6 +1,6 @@
 package com.chrisferdev.hus.infrastructure.driven.jpa.mapper;
 
-import com.chrisferdev.hus.configuration.security.request.UserRequest;
+import com.chrisferdev.hus.infrastructure.driving.dto.request.UserRequest;
 import com.chrisferdev.hus.infrastructure.driven.jpa.entity.UserEntity;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;

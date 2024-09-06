@@ -5,7 +5,7 @@ import com.chrisferdev.hus.configuration.exception.DocumentException;
 import com.chrisferdev.hus.configuration.exception.EmailException;
 import com.chrisferdev.hus.configuration.exception.PhoneException;
 import com.chrisferdev.hus.configuration.exception.exceptionhandler.ExceptionResponse;
-import com.chrisferdev.hus.configuration.security.request.UserRequest;
+import com.chrisferdev.hus.infrastructure.driving.dto.request.UserRequest;
 import com.chrisferdev.hus.domain.model.UserType;
 import com.chrisferdev.hus.domain.spi.output.IUserPersistencePort;
 import org.springframework.stereotype.Service;

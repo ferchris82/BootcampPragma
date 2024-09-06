@@ -1,6 +1,6 @@
 package com.chrisferdev.hus.infrastructure.driving.rest;
 
-import com.chrisferdev.hus.configuration.security.request.UserRequest;
+import com.chrisferdev.hus.infrastructure.driving.dto.request.UserRequest;
 import com.chrisferdev.hus.domain.api.usecase.UserServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

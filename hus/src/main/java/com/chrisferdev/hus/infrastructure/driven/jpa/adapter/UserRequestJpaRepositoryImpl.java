@@ -1,6 +1,6 @@
 package com.chrisferdev.hus.infrastructure.driven.jpa.adapter;
 
-import com.chrisferdev.hus.configuration.security.request.UserRequest;
+import com.chrisferdev.hus.infrastructure.driving.dto.request.UserRequest;
 import com.chrisferdev.hus.domain.spi.output.IUserPersistencePort;
 import com.chrisferdev.hus.infrastructure.driven.jpa.mapper.UserMapper;
 import com.chrisferdev.hus.infrastructure.driven.jpa.repository.IUserRequestJpaRepository;

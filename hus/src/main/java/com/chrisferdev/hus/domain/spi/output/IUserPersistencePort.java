@@ -1,6 +1,6 @@
 package com.chrisferdev.hus.domain.spi.output;
 
-import com.chrisferdev.hus.configuration.security.request.UserRequest;
+import com.chrisferdev.hus.infrastructure.driving.dto.request.UserRequest;
 
 public interface IUserPersistencePort {
 
