@@ -5,4 +5,5 @@ import com.chrisferdev.hus.infrastructure.driving.dto.request.UserRequest;
 public interface IUserPersistencePort {
 
     UserRequest saveUser(UserRequest userRequest);
+    UserRequest findByEmail(String email);
 }

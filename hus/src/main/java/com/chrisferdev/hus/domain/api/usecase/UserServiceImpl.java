@@ -72,6 +72,7 @@ public class UserServiceImpl {
         if (!documentId.matches("\\d+")) {
             throw new DocumentException(ExceptionResponse.ERROR_DOCUMENT_ID.getMessage());
         }
+
     }
 
     private void validateBirthDate(LocalDate birthDate) {
