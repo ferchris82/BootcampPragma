@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("api/security")
-public class UserController {
+public class RegisterUserController {
     private final UserServiceImpl userServiceImpl;
 
-    public UserController(UserServiceImpl userServiceImpl) {
+    public RegisterUserController(UserServiceImpl userServiceImpl) {
         this.userServiceImpl = userServiceImpl;
     }
 

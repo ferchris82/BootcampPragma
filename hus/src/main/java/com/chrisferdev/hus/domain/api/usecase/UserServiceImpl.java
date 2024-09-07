@@ -25,12 +25,14 @@ public class UserServiceImpl {
         this.iUserPersistencePort = iUserPersistencePort;
         this.passwordEncoder = passwordEncoder;
     }
-    
+
     public UserRequest saveUser(UserRequest userRequest) {
         validateUserRequest(userRequest);
         if (userRequest.getUserType() == null) {
-            userRequest.setUserType(UserType.AUX_BODEGA);
+            userRequest.setUserType(UserType.WAREHOUSE_ASSISTANT);
         }
+
+        userRequest.setPassword(passwordEncoder.encode(userRequest.getPassword()));
         return iUserPersistencePort.saveUser(userRequest);
     }
 
