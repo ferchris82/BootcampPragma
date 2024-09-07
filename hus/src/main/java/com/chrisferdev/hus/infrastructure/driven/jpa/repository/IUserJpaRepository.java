@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
 
-public interface IUserRequestJpaRepository extends JpaRepository<UserEntity, Long> {
+public interface IUserJpaRepository extends JpaRepository<UserEntity, Long> {
     Optional<UserEntity>findByEmail(String email);
 }

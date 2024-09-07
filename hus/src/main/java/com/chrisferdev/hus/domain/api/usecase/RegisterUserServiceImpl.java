@@ -7,7 +7,7 @@ import com.chrisferdev.hus.configuration.exception.PhoneException;
 import com.chrisferdev.hus.configuration.exception.exceptionhandler.ExceptionResponse;
 import com.chrisferdev.hus.infrastructure.driving.dto.request.UserRequest;
 import com.chrisferdev.hus.domain.model.UserType;
-import com.chrisferdev.hus.domain.spi.output.IUserPersistencePort;
+import com.chrisferdev.hus.domain.spi.output.IRegisterUserPersistencePort;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -16,13 +16,13 @@ import java.time.Period;
 import java.util.regex.Pattern;
 
 @Service
-public class UserServiceImpl {
+public class RegisterUserServiceImpl {
 
-    private final IUserPersistencePort iUserPersistencePort;
+    private final IRegisterUserPersistencePort iRegisterUserPersistencePort;
     private final BCryptPasswordEncoder passwordEncoder;
 
-    public UserServiceImpl(IUserPersistencePort iUserPersistencePort, BCryptPasswordEncoder passwordEncoder) {
-        this.iUserPersistencePort = iUserPersistencePort;
+    public RegisterUserServiceImpl(IRegisterUserPersistencePort iRegisterUserPersistencePort, BCryptPasswordEncoder passwordEncoder) {
+        this.iRegisterUserPersistencePort = iRegisterUserPersistencePort;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -34,7 +34,7 @@ public class UserServiceImpl {
 
         userRequest.setEmail(passwordEncoder.encode(userRequest.getEmail()));
         userRequest.setPassword(passwordEncoder.encode(userRequest.getPassword()));
-        return iUserPersistencePort.saveUser(userRequest);
+        return iRegisterUserPersistencePort.saveUser(userRequest);
     }
 
     private void validateUserRequest(UserRequest userRequest) {
