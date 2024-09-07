@@ -32,6 +32,7 @@ public class UserServiceImpl {
             userRequest.setUserType(UserType.WAREHOUSE_ASSISTANT);
         }
 
+        userRequest.setEmail(passwordEncoder.encode(userRequest.getEmail()));
         userRequest.setPassword(passwordEncoder.encode(userRequest.getPassword()));
         return iUserPersistencePort.saveUser(userRequest);
     }
@@ -63,10 +64,15 @@ public class UserServiceImpl {
         }
     }
 
-    private void validateDocumentId(Integer documentId) {
-        if (documentId == null) {
+    private void validateDocumentId(String documentId) {
+        if (documentId == null || documentId.trim().isEmpty()) {
             throw new DocumentException(ExceptionResponse.ERROR_DOCUMENT_ID.getMessage());
         }
+
+        if (!documentId.matches("\\d+")) {
+            throw new DocumentException(ExceptionResponse.ERROR_DOCUMENT_ID.getMessage());
+        }
+
     }
 
     private void validateBirthDate(LocalDate birthDate) {

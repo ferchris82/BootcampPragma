@@ -24,7 +24,7 @@ public class UserRequest {
     private String lastname;
 
     @NotBlank(message = "The document is required.")
-    private Integer documentId;
+    private String documentId;
 
     @NotBlank(message = "The phone is required.")
     private String phoneNumber;
