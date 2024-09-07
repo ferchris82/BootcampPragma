@@ -21,10 +21,4 @@ public class RegisterUserJpaRepositoryImpl implements IRegisterUserPersistencePo
         return userMapper.toUserRequest(iUserJpaRepository.save(userMapper.toUserEntity(userRequest)));
     }
 
-    @Override
-    public UserRequest findByEmail(String email) {
-        return userMapper.toUserRequest(iUserJpaRepository.findByEmail(userMapper.toUserEntity()));
-    }
-
-
 }
