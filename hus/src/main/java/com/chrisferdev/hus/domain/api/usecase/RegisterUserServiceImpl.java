@@ -32,7 +32,6 @@ public class RegisterUserServiceImpl {
             userRequest.setUserType(UserType.WAREHOUSE_ASSISTANT);
         }
 
-        userRequest.setEmail(passwordEncoder.encode(userRequest.getEmail()));
         userRequest.setPassword(passwordEncoder.encode(userRequest.getPassword()));
         return iRegisterUserPersistencePort.saveUser(userRequest);
     }
