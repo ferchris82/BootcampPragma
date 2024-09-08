@@ -16,7 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("api/brands")
+@RequestMapping("/api/brands")
 public class BrandController {
     private final BrandServiceImpl brandServiceImpl;
 

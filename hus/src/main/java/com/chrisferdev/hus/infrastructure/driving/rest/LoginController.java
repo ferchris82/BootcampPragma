@@ -1,6 +1,7 @@
 package com.chrisferdev.hus.infrastructure.driving.rest;
 
 import com.chrisferdev.hus.infrastructure.driving.dto.record.UserDTO;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -13,7 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("api/security")
+@RequestMapping("/api/security")
+@Slf4j
 public class LoginController {
 
     private final AuthenticationManager authenticationManager;
@@ -29,6 +31,12 @@ public class LoginController {
         );
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        log.info("Rol de user: {}", SecurityContextHolder.getContext()
+                .getAuthentication()
+                .getAuthorities().stream()
+                .findFirst().get().toString());
+
         return new ResponseEntity<>("Usuario Logueado satisfactoriamente", HttpStatus.OK);
     }
 }

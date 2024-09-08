@@ -13,10 +13,16 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
 
+    private static final String ROLE_ADMIN = "ADMIN";
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.csrf( csrf-> csrf.disable()).authorizeHttpRequests(
-                aut -> aut.requestMatchers( "api/security/**").permitAll().anyRequest().authenticated()
+                aut -> aut.requestMatchers("/api/admin/categories/**").hasRole(ROLE_ADMIN)
+                        .requestMatchers("/api/admin/brands/**").hasRole(ROLE_ADMIN)
+                        .requestMatchers("/api/admin/products/**").hasRole(ROLE_ADMIN)
+                        .requestMatchers("/api/admin/security/register/**").hasRole(ROLE_ADMIN)
+                        .requestMatchers( "/api/security/login**").permitAll().anyRequest().authenticated()
         );
 
         return httpSecurity.build();
