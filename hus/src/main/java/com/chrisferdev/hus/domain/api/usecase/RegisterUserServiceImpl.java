@@ -29,7 +29,7 @@ public class RegisterUserServiceImpl {
     public UserRequest saveUser(UserRequest userRequest) {
         validateUserRequest(userRequest);
         if (userRequest.getUserType() == null) {
-            userRequest.setUserType(UserType.ADMIN);
+            userRequest.setUserType(UserType.WAREHOUSE_ASSISTANT);
         }
 
         userRequest.setPassword(passwordEncoder.encode(userRequest.getPassword()));
