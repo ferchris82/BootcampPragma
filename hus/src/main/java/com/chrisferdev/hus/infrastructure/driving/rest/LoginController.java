@@ -1,5 +1,6 @@
 package com.chrisferdev.hus.infrastructure.driving.rest;
 
+import com.chrisferdev.hus.configuration.security.jwt.JWTGenerator;
 import com.chrisferdev.hus.infrastructure.driving.dto.record.UserDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -19,9 +20,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class LoginController {
 
     private final AuthenticationManager authenticationManager;
+    private final JWTGenerator jwtGenerator;
 
-    public LoginController(AuthenticationManager authenticationManager) {
+
+    public LoginController(AuthenticationManager authenticationManager, JWTGenerator jwtGenerator) {
         this.authenticationManager = authenticationManager;
+        this.jwtGenerator = jwtGenerator;
     }
 
     @PostMapping("/login")
@@ -37,6 +41,8 @@ public class LoginController {
                 .getAuthorities().stream()
                 .findFirst().get().toString());
 
-        return new ResponseEntity<>("Usuario Logueado satisfactoriamente", HttpStatus.OK);
+        String token = jwtGenerator.getToken(userDTO.username());
+
+        return new ResponseEntity<>("Usuario Logueado satisfactoriamente: "+ token, HttpStatus.OK);
     }
 }
