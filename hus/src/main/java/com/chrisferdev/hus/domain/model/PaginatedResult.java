@@ -16,4 +16,11 @@ public class PaginatedResult<T>{
     private int size;
     private long totalElements;
 
+    public int getTotal() {
+        return (int) totalElements;
+    }
+
+    public void setTotal(int total) {
+        this.totalElements = total;
+    }
 }

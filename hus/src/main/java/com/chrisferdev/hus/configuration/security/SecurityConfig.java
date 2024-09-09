@@ -34,6 +34,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST,"/api/products/**").hasRole(ROLE_WAREHOUSE_ASSISTANT)
                         .requestMatchers(HttpMethod.GET, "/api/categories/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/products/**").permitAll()
+                        .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger-resources/**", "/webjars/**").permitAll()
                         .requestMatchers( "/api/security/login**").permitAll().anyRequest().authenticated()
 
         ).addFilterAfter(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class);

@@ -1,6 +1,5 @@
 package com.chrisferdev.hus.infrastructure.driven.jpa.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;

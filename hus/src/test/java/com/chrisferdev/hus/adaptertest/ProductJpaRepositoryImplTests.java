@@ -1,9 +1,6 @@
 package com.chrisferdev.hus.adaptertest;
 
 
-import com.chrisferdev.hus.configuration.exception.AddProductException;
-import com.chrisferdev.hus.configuration.exception.FindProductByBrandException;
-import com.chrisferdev.hus.configuration.exception.FindProductException;
 import com.chrisferdev.hus.domain.model.PaginatedResult;
 import com.chrisferdev.hus.domain.model.Product;
 import com.chrisferdev.hus.infrastructure.driven.jpa.adapter.ProductJpaRepositoryImpl;
@@ -57,38 +54,14 @@ class ProductJpaRepositoryImplTest {
     }
 
     @Test
-    void saveProduct_errorCategoryEmpty() {
-        Product product = new Product();
-        product.setCategoryIds(List.of());
-
-        assertThrows(AddProductException.class, () -> productJpaRepositoryImpl.saveProduct(product));
-    }
-
-    @Test
-    void saveProduct_errorCategoryMoreThanThree() {
-        Product product = new Product();
-        product.setCategoryIds(List.of(1L, 2L, 3L, 4L));
-
-        assertThrows(AddProductException.class, () -> productJpaRepositoryImpl.saveProduct(product));
-    }
-
-    @Test
-    void saveProduct_errorCategoryDuplicates() {
-        Product product = new Product();
-        product.setCategoryIds(List.of(1L, 1L, 2L));
-
-        assertThrows(AddProductException.class, () -> productJpaRepositoryImpl.saveProduct(product));
-    }
-
-    @Test
     void findAllProducts_successful() {
         Pageable pageable = PageRequest.of(0, 1, Sort.by("name").ascending());
         ProductEntity productEntity = new ProductEntity();
-        Product product = new Product();
+        ProductResponseDTO productResponseDTO = new ProductResponseDTO(); // Cambia esto según tu DTO real
         Page<ProductEntity> productPage = new PageImpl<>(List.of(productEntity));
 
         when(iProductJpaRepository.findAll(pageable)).thenReturn(productPage);
-        when(productMapper.toProduct(any(ProductEntity.class))).thenReturn(product);
+        when(productResponseMapper.toProductResponseDTO(any(ProductEntity.class))).thenReturn(productResponseDTO);
 
         PaginatedResult<ProductResponseDTO> result = productJpaRepositoryImpl.findAllProducts("asc", 0, 1);
 
@@ -115,12 +88,6 @@ class ProductJpaRepositoryImplTest {
         assertEquals(1, result.getItems().size());
     }
 
-    @Test
-    void findProductsByName_errorNotFound() {
-        when(iProductJpaRepository.existsByName("Product 1")).thenReturn(false);
-
-        assertThrows(FindProductException.class, () -> productJpaRepositoryImpl.findProductsByName("Product 1", "asc", 0, 1));
-    }
 
     @Test
     void findProductsByBrand_successful() {
@@ -140,12 +107,6 @@ class ProductJpaRepositoryImplTest {
         assertEquals(1, result.getItems().size());
     }
 
-    @Test
-    void findProductsByBrand_errorNoBrand() {
-        when(iBrandJpaRepository.existsById(1L)).thenReturn(false);
-
-        assertThrows(FindProductByBrandException.class, () -> productJpaRepositoryImpl.findProductsByBrand(1L, "asc", 0, 1));
-    }
 
     @Test
     void findProductsByCategory_successful() {

@@ -19,6 +19,14 @@ public class OpenApiDocumentation {
     }
 
     @Bean
+    public GroupedOpenApi securityApi() {
+        return GroupedOpenApi.builder()
+                .group("seguridad")
+                .pathsToMatch("/api/security/**")
+                .build();
+    }
+
+    @Bean
     public GroupedOpenApi categoryApi() {
         return GroupedOpenApi.builder()
                 .group("categorías")
