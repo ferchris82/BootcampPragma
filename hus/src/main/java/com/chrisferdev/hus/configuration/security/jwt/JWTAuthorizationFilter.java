@@ -25,8 +25,6 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
         this.customUserDetailsService = customUserDetailsService;
     }
 
-    // Filtro que intercepta todas las peticiones que van al backend (Validar si el token es correcto)
-
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         try {

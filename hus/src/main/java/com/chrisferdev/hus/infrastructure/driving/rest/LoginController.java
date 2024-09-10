@@ -1,6 +1,6 @@
 package com.chrisferdev.hus.infrastructure.driving.rest;
 
-import com.chrisferdev.hus.configuration.security.jwt.JWTGenerator;
+import com.chrisferdev.hus.configuration.security.jwt.JWTGeneratorService;
 import com.chrisferdev.hus.infrastructure.driving.dto.record.UserDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -25,12 +25,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class LoginController {
 
     private final AuthenticationManager authenticationManager;
-    private final JWTGenerator jwtGenerator;
+    private final JWTGeneratorService jwtGeneratorService;
 
 
-    public LoginController(AuthenticationManager authenticationManager, JWTGenerator jwtGenerator) {
+    public LoginController(AuthenticationManager authenticationManager, JWTGeneratorService jwtGeneratorService) {
         this.authenticationManager = authenticationManager;
-        this.jwtGenerator = jwtGenerator;
+        this.jwtGeneratorService = jwtGeneratorService;
     }
 
     @Operation(
@@ -56,7 +56,7 @@ public class LoginController {
                 .getAuthorities().stream()
                 .findFirst().get().toString());
 
-        String token = jwtGenerator.getToken(userDTO.username());
+        String token = jwtGeneratorService.getToken(userDTO.username());
 
         return new ResponseEntity<>("Usuario Logueado satisfactoriamente: "+ token, HttpStatus.OK);
     }

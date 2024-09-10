@@ -14,8 +14,7 @@ import java.util.stream.Collectors;
 import static com.chrisferdev.hus.configuration.security.jwt.Constans.*;
 
 @Service
-// Asignamos los roles una vez el usuario ha sido asignado
-public class JWTGenerator {
+public class JWTGeneratorService {
     public String getToken(String username){
         List<GrantedAuthority> authorityList = AuthorityUtils.commaSeparatedStringToAuthorityList(
                 SecurityContextHolder.getContext()

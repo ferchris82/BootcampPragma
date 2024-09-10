@@ -42,10 +42,6 @@ class ProductServiceImplTest {
         Product product = new Product();
         product.setCategoryIds(List.of(1L, 2L));
 
-        when(productMapper.toProductEntity(product)).thenReturn(product);
-        when(iProductJpaRepository.save(product)).thenReturn(product);
-        when(productMapper.toProduct(product)).thenReturn(product);
-
         // Ejecutar el método a probar
         Product result = productService.saveProduct(product);
 

@@ -16,7 +16,7 @@ public enum ExceptionResponse {
     PRODUCT_NOT_FOUND("El producto no fue encontrado"),
     PRODUCT_BRAND_NOT_FOUND("La marca no fue encontrada"),
     ERROR_DOCUMENT_ID("El documento no es valido"),
-    ERROR_EMAIL("El correo no es válido"),
+    ERROR_EMAIL("El correo o la contraseña no es válido"),
     ERROR_BIRTHDATE("El usuario debe ser mayor de edad"),
     ERROR_PHONE("El teléfono es obligatorio y debe tener un máximo de 13 caracteres, puede contener el símbolo +.");
 

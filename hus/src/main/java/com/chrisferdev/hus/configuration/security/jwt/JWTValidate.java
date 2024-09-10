@@ -13,7 +13,6 @@ import static com.chrisferdev.hus.configuration.security.jwt.Constans.*;
 
 public class JWTValidate {
 
-    // Validamos que el token venga en la petición
     public static boolean tokenExists(HttpServletRequest request, HttpServletResponse response){
         String header = request.getHeader(HEADER_AUTHORIZATION);
         if(header == null || !header.startsWith(TOKEN_BEARER_PREFIX))
@@ -21,7 +20,6 @@ public class JWTValidate {
         return true;
     }
 
-    // Validamos que el token sea el correcto
     public static Claims JWTValid(HttpServletRequest request){
         String jwtToken = request.getHeader(HEADER_AUTHORIZATION).replace(TOKEN_BEARER_PREFIX, "");
 
@@ -31,7 +29,6 @@ public class JWTValidate {
                 .parseClaimsJws(jwtToken).getBody();
     }
 
-    //Autenticamos en el flujo de spring
     public static void setAuthentication(Claims claims, CustomUserDetailsService customUserDetailsService){
         UserDetails userDetails = customUserDetailsService.loadUserByUsername(claims.getSubject());
         UsernamePasswordAuthenticationToken authentication =

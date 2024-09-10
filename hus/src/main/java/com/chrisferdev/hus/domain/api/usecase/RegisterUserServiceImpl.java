@@ -21,6 +21,10 @@ public class RegisterUserServiceImpl {
     private final IRegisterUserPersistencePort iRegisterUserPersistencePort;
     private final BCryptPasswordEncoder passwordEncoder;
 
+    private static final String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+    private static final String PHONE_REGEX = "^\\+?\\d{1,13}$";
+    private static final String DOCUMENT_REGEX = "\\d+";
+
     public RegisterUserServiceImpl(IRegisterUserPersistencePort iRegisterUserPersistencePort, BCryptPasswordEncoder passwordEncoder) {
         this.iRegisterUserPersistencePort = iRegisterUserPersistencePort;
         this.passwordEncoder = passwordEncoder;
@@ -28,6 +32,7 @@ public class RegisterUserServiceImpl {
 
     public UserRequest saveUser(UserRequest userRequest) {
         validateUserRequest(userRequest);
+
         if (userRequest.getUserType() == null) {
             userRequest.setUserType(UserType.WAREHOUSE_ASSISTANT);
         }
@@ -47,8 +52,8 @@ public class RegisterUserServiceImpl {
         if (email == null || email.isBlank()) {
             throw new EmailException(ExceptionResponse.ERROR_EMAIL.getMessage());
         }
-        String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
-        if (!Pattern.matches(emailRegex, email)) {
+
+        if (!Pattern.matches(EMAIL_REGEX, email)) {
             throw new EmailException(ExceptionResponse.ERROR_EMAIL.getMessage());
         }
     }
@@ -57,8 +62,8 @@ public class RegisterUserServiceImpl {
         if (phone == null || phone.isBlank()) {
             throw new PhoneException(ExceptionResponse.ERROR_PHONE.getMessage());
         }
-        String phoneRegex = "^\\+?\\d{1,13}$";
-        if (!Pattern.matches(phoneRegex, phone)) {
+
+        if (!Pattern.matches(PHONE_REGEX, phone)) {
             throw new PhoneException(ExceptionResponse.ERROR_PHONE.getMessage());
         }
     }
@@ -68,19 +73,17 @@ public class RegisterUserServiceImpl {
             throw new DocumentException(ExceptionResponse.ERROR_DOCUMENT_ID.getMessage());
         }
 
-        if (!documentId.matches("\\d+")) {
+        if (!Pattern.matches(DOCUMENT_REGEX, documentId)) {
             throw new DocumentException(ExceptionResponse.ERROR_DOCUMENT_ID.getMessage());
         }
-
     }
 
     private void validateBirthDate(LocalDate birthDate) {
         if (birthDate == null) {
             throw new BirthDathException(ExceptionResponse.ERROR_BIRTHDATE.getMessage());
         }
-        LocalDate today = LocalDate.now();
-        int age = Period.between(birthDate, today).getYears();
 
+        int age = Period.between(birthDate, LocalDate.now()).getYears();
         if (age < 18) {
             throw new BirthDathException(ExceptionResponse.ERROR_BIRTHDATE.getMessage());
         }
