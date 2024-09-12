@@ -13,7 +13,7 @@ public interface OrderMapper {
     Order toOrder(OrderEntity orderEntity);
     Iterable<Order> toOrderList(Iterable<OrderEntity> orderEntities);
 
-    @Mapping(target = "userEntity", ignore = true) 
+    @Mapping(target = "userEntity", ignore = true)
     @Mapping(target = "orderProducts", ignore = true)
     OrderEntity toOrderEntity(Order order);
 }
